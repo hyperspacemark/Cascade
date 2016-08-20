@@ -49,10 +49,10 @@ extension Column {
     }
 }
 
-extension Column: Equatable { }
-
-func ==(lhs: Column, rhs: Column) -> Bool {
-    return (lhs.index == rhs.index) && (lhs.bottomEdge == rhs.bottomEdge)
+extension Column: Equatable {
+    static func ==(lhs: Column, rhs: Column) -> Bool {
+        return (lhs.index == rhs.index) && (lhs.bottomEdge == rhs.bottomEdge)
+    }
 }
 
 func shortestColumn(_ columns: [Column]) -> Column? {
