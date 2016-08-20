@@ -14,7 +14,6 @@
 		F8A0C3211A1FB59F002C32C2 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A0C3201A1FB59F002C32C2 /* Section.swift */; };
 		F8A0C3231A1FB63F002C32C2 /* Column.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A0C3221A1FB63F002C32C2 /* Column.swift */; };
 		F8A0C3271A1FB71C002C32C2 /* CascadeLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A0C3261A1FB71C002C32C2 /* CascadeLayoutDelegate.swift */; };
-		F8A273AC1A24E5B500A05BAF /* Flatten.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A273AB1A24E5B500A05BAF /* Flatten.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,7 +25,6 @@
 		F8A0C3201A1FB59F002C32C2 /* Section.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		F8A0C3221A1FB63F002C32C2 /* Column.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Column.swift; sourceTree = "<group>"; };
 		F8A0C3261A1FB71C002C32C2 /* CascadeLayoutDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CascadeLayoutDelegate.swift; sourceTree = "<group>"; };
-		F8A273AB1A24E5B500A05BAF /* Flatten.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flatten.swift; sourceTree = "<group>"; };
 		F8FB72591A1F9654004265D5 /* Cascade.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cascade.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -69,7 +67,6 @@
 				F8A0C3261A1FB71C002C32C2 /* CascadeLayoutDelegate.swift */,
 				F8A0C3201A1FB59F002C32C2 /* Section.swift */,
 				F8A0C3221A1FB63F002C32C2 /* Column.swift */,
-				F8A273AB1A24E5B500A05BAF /* Flatten.swift */,
 				F8910CF31A2E193F0062E5A0 /* Size.swift */,
 				F8482C421A2E627D008916A0 /* Info.plist */,
 				F8482C441A2E62F9008916A0 /* Cascade.h */,
@@ -165,7 +162,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F8A273AC1A24E5B500A05BAF /* Flatten.swift in Sources */,
 				F8A0C3231A1FB63F002C32C2 /* Column.swift in Sources */,
 				F8A0C31F1A1FB54B002C32C2 /* CascadeLayout.swift in Sources */,
 				F8A0C3271A1FB71C002C32C2 /* CascadeLayoutDelegate.swift in Sources */,
