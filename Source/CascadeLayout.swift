@@ -12,7 +12,7 @@ open class CascadeLayout: UICollectionViewFlowLayout {
     override open var collectionViewContentSize: CGSize {
         guard
             let width = effectiveWidth,
-            let height = tallestSection(sections)?.bottomEdge
+            let height = sections.tallest?.bottomEdge
         else {
             return .zero
         }
@@ -55,7 +55,7 @@ open class CascadeLayout: UICollectionViewFlowLayout {
             let indexPath = IndexPath(item: itemIndex, section: index)
             let itemSize = self.itemSizeAtIndexPath(indexPath)
 
-            if let oldColumn = shortestColumn(columns) {
+            if let oldColumn = columns.shortest {
                 let newColumn = addItemToColumn(oldColumn, indexPath, itemSize)
                 return replaceColumn(columns, oldColumn, newColumn)
             } else {

@@ -11,7 +11,7 @@ struct Section {
     }
 
     var bottomEdge: CGFloat {
-        return tallestColumn(columns)?.bottomEdge ?? 0
+        return columns.tallest?.bottomEdge ?? 0
     }
 
     init(numberOfItems: Int, columns: [Column]) {
@@ -20,6 +20,8 @@ struct Section {
     }
 }
 
-func tallestSection(_ sections: [Section]) -> Section? {
-    return sections.sorted { $0.bottomEdge > $1.bottomEdge }.first
+extension Sequence where Iterator.Element == Section {
+    var tallest: Section? {
+        return self.max { $0.bottomEdge < $1.bottomEdge }
+    }
 }

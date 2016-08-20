@@ -55,12 +55,18 @@ extension Column: Equatable {
     }
 }
 
-func shortestColumn(_ columns: [Column]) -> Column? {
-    return columns.sorted { $0.bottomEdge < $1.bottomEdge }.first
-}
+extension Sequence where Iterator.Element == Column {
+    var shortest: Column? {
+        return self.min(by: bottomEdgesInIncreasingOrder)
+    }
 
-func tallestColumn(_ columns: [Column]) -> Column? {
-    return columns.sorted { $0.bottomEdge > $1.bottomEdge }.first
+    var tallest: Column? {
+        return self.max(by: bottomEdgesInIncreasingOrder)
+    }
+
+    private func bottomEdgesInIncreasingOrder(lhs: Column, rhs: Column) -> Bool {
+        return lhs.bottomEdge < rhs.bottomEdge
+    }
 }
 
 func addItemToColumn(_ column: Column, _ indexPath: IndexPath, _ size: CGSize) -> Column {
