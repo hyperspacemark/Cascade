@@ -67,7 +67,7 @@ open class CascadeLayout: UICollectionViewFlowLayout {
     func columnCount(forSectionAt index: Int) -> Int {
         let indexPath = IndexPath(index: index)
         switch (delegate, collectionView) {
-        case let (.some(del), .some(collection)):
+        case let (del?, collection?):
             return del.collectionView(collection, layout: self, numberOfColumnsInSectionAtIndexPath: indexPath)
         default:
             return defaultColumnCount
@@ -76,7 +76,7 @@ open class CascadeLayout: UICollectionViewFlowLayout {
 
     func itemSize(at indexPath: IndexPath) -> CGSize {
         switch (delegate, collectionView) {
-        case let (.some(del), .some(collection)):
+        case let (del?, collection?):
             return del.collectionView?(collection, layout: self, sizeForItemAt: indexPath) ?? defaultItemSize
         default:
             return defaultItemSize
@@ -96,7 +96,7 @@ open class CascadeLayout: UICollectionViewFlowLayout {
     }
 
     override open func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-        return collectionView?.bounds.width != .some(newBounds.width)
+        return collectionView?.bounds.width != newBounds.width
     }
 
     override open func invalidateLayout() {
