@@ -32,7 +32,7 @@ extension Column {
         self.spacing = column.spacing
     }
 
-    func addItemWithSize(_ itemSize: CGSize, atIndexPath indexPath: IndexPath) -> Column {
+    func appendItem(with itemSize: CGSize, at indexPath: IndexPath) -> Column {
         let aspectRatio = itemSize.height / itemSize.width
         let itemRect = CGRect(x: frame.minX,
             y: bottomEdge + spacing,
@@ -69,16 +69,19 @@ extension Sequence where Iterator.Element == Column {
     }
 }
 
-func addItemToColumn(_ column: Column, _ indexPath: IndexPath, _ size: CGSize) -> Column {
-    return column.addItemWithSize(size, atIndexPath: indexPath)
-}
-
-func replaceColumn(_ columns: [Column], _ oldColumn: Column, _ newColumn: Column) -> [Column] {
-    var columns = columns
-
-    if let index = columns.index(of: oldColumn) {
-        columns.remove(at: index)
+extension RangeReplaceableCollection where Iterator.Element == Column {
+    func replacing(_ oldColumn: Column, with newColumn: Column) -> Self {
+        var mutable = self
+        mutable.replace(oldColumn, with: newColumn)
+        return mutable
     }
-
-    return columns + [newColumn]
+    
+    mutating func replace(_ oldColumn: Column, with newColumn: Column) {
+        guard let index = self.index(of: oldColumn) else {
+            preconditionFailure()
+        }
+        
+        let range = ClosedRange(uncheckedBounds: (index, index))
+        replaceSubrange(range, with: [newColumn])
+    }
 }

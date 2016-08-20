@@ -24,8 +24,8 @@ open class CascadeLayout: UICollectionViewFlowLayout {
         return collectionView.map { $0.frame.width - $0.contentInset.left - $0.contentInset.right }
     }
 
-    func columnWidthForSectionAtIndex(_ index: Int) -> CGFloat {
-        let numberOfColumns = columnCountForSectionAtIndex(index)
+    func columnWidth(forSectionAt index: Int) -> CGFloat {
+        let numberOfColumns = columnCount(forSectionAt: index)
         let containerWidth = effectiveWidth ?? 0
         return (containerWidth - minimumLineSpacing * CGFloat(numberOfColumns - 1)) / CGFloat(numberOfColumns)
     }
@@ -35,16 +35,16 @@ open class CascadeLayout: UICollectionViewFlowLayout {
 
         sections = (0..<numberOfSections).reduce([]) { sections, index in
             let numberOfItems = self.collectionView?.numberOfItems(inSection: index) ?? 0
-            let columns = self.columnsForSectionAtIndex(index, numberOfItems: numberOfItems, previousSection: sections.last)
+            let columns = self.columns(forSectionAt: index, numberOfItems: numberOfItems, previousSection: sections.last)
             let section = Section(numberOfItems: numberOfItems, columns: columns)
             return sections + [section]
         }
     }
 
-    func columnsForSectionAtIndex(_ index: Int, numberOfItems: Int, previousSection: Section?) -> [Column] {
+    func columns(forSectionAt index: Int, numberOfItems: Int, previousSection: Section?) -> [Column] {
         let previousBottomEdge = previousSection?.bottomEdge ?? 0
-        let numberOfColumns = columnCountForSectionAtIndex(index)
-        let columnWidth = columnWidthForSectionAtIndex(index)
+        let numberOfColumns = columnCount(forSectionAt: index)
+        let columnWidth = self.columnWidth(forSectionAt: index)
 
         let columns: [Column] = (0..<numberOfColumns).map { columnIndex in
             let minX = CGFloat(columnIndex) * (columnWidth + self.minimumLineSpacing)
@@ -53,18 +53,18 @@ open class CascadeLayout: UICollectionViewFlowLayout {
 
         return (0..<numberOfItems).reduce(columns) { columns, itemIndex in
             let indexPath = IndexPath(item: itemIndex, section: index)
-            let itemSize = self.itemSizeAtIndexPath(indexPath)
+            let itemSize = self.itemSize(at: indexPath)
 
             if let oldColumn = columns.shortest {
-                let newColumn = addItemToColumn(oldColumn, indexPath, itemSize)
-                return replaceColumn(columns, oldColumn, newColumn)
+                let newColumn = oldColumn.appendItem(with: itemSize, at: indexPath)
+                return columns.replacing(oldColumn, with: newColumn)
             } else {
                 return columns
             }
         }
     }
 
-    func columnCountForSectionAtIndex(_ index: Int) -> Int {
+    func columnCount(forSectionAt index: Int) -> Int {
         let indexPath = IndexPath(index: index)
         switch (delegate, collectionView) {
         case let (.some(del), .some(collection)):
@@ -74,7 +74,7 @@ open class CascadeLayout: UICollectionViewFlowLayout {
         }
     }
 
-    func itemSizeAtIndexPath(_ indexPath: IndexPath) -> CGSize {
+    func itemSize(at indexPath: IndexPath) -> CGSize {
         switch (delegate, collectionView) {
         case let (.some(del), .some(collection)):
             return del.collectionView?(collection, layout: self, sizeForItemAt: indexPath) ?? defaultItemSize
