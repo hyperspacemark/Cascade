@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		F8482C451A2E6323008916A0 /* Cascade.h in Headers */ = {isa = PBXBuildFile; fileRef = F8482C441A2E62F9008916A0 /* Cascade.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F87644561A77EA9B00DB9933 /* Runes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F87644551A77EA9A00DB9933 /* Runes.framework */; };
-		F8910CF41A2E193F0062E5A0 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8910CF31A2E193F0062E5A0 /* Size.swift */; };
 		F8A0C31F1A1FB54B002C32C2 /* CascadeLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A0C31E1A1FB54B002C32C2 /* CascadeLayout.swift */; };
 		F8A0C3211A1FB59F002C32C2 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A0C3201A1FB59F002C32C2 /* Section.swift */; };
 		F8A0C3231A1FB63F002C32C2 /* Column.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A0C3221A1FB63F002C32C2 /* Column.swift */; };
@@ -20,7 +19,6 @@
 		F8482C421A2E627D008916A0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F8482C441A2E62F9008916A0 /* Cascade.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cascade.h; sourceTree = "<group>"; };
 		F87644551A77EA9A00DB9933 /* Runes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Runes.framework; path = Carthage/Build/iOS/Runes.framework; sourceTree = "<group>"; };
-		F8910CF31A2E193F0062E5A0 /* Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
 		F8A0C31E1A1FB54B002C32C2 /* CascadeLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CascadeLayout.swift; sourceTree = "<group>"; };
 		F8A0C3201A1FB59F002C32C2 /* Section.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		F8A0C3221A1FB63F002C32C2 /* Column.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Column.swift; sourceTree = "<group>"; };
@@ -67,7 +65,6 @@
 				F8A0C3261A1FB71C002C32C2 /* CascadeLayoutDelegate.swift */,
 				F8A0C3201A1FB59F002C32C2 /* Section.swift */,
 				F8A0C3221A1FB63F002C32C2 /* Column.swift */,
-				F8910CF31A2E193F0062E5A0 /* Size.swift */,
 				F8482C421A2E627D008916A0 /* Info.plist */,
 				F8482C441A2E62F9008916A0 /* Cascade.h */,
 			);
@@ -165,7 +162,6 @@
 				F8A0C3231A1FB63F002C32C2 /* Column.swift in Sources */,
 				F8A0C31F1A1FB54B002C32C2 /* CascadeLayout.swift in Sources */,
 				F8A0C3271A1FB71C002C32C2 /* CascadeLayoutDelegate.swift in Sources */,
-				F8910CF41A2E193F0062E5A0 /* Size.swift in Sources */,
 				F8A0C3211A1FB59F002C32C2 /* Section.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
