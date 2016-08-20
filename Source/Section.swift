@@ -7,7 +7,7 @@ struct Section {
 
     var itemAttributes: [UICollectionViewLayoutAttributes] {
         let attributes = columns.map { $0.attributes }
-        return flatten(attributes)
+        return Array(attributes.joined())
     }
 
     var bottomEdge: CGFloat {
@@ -20,6 +20,6 @@ struct Section {
     }
 }
 
-func tallestSection(sections: [Section]) -> Section? {
-    return sorted(sections) { $0.bottomEdge > $1.bottomEdge }.first
+func tallestSection(_ sections: [Section]) -> Section? {
+    return sections.sorted { $0.bottomEdge > $1.bottomEdge }.first
 }

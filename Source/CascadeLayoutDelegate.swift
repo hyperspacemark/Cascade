@@ -1,5 +1,5 @@
 import UIKit
 
 public protocol CascadeLayoutDelegate: UICollectionViewDelegateFlowLayout {
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: CascadeLayout, numberOfColumnsInSectionAtIndexPath indexPath: NSIndexPath) -> Int
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: CascadeLayout, numberOfColumnsInSectionAtIndexPath indexPath: IndexPath) -> Int
 }

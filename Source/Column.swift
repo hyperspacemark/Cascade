@@ -32,18 +32,18 @@ extension Column {
         self.spacing = column.spacing
     }
 
-    func addItemWithSize(itemSize: CGSize, atIndexPath indexPath: NSIndexPath) -> Column {
+    func addItemWithSize(_ itemSize: CGSize, atIndexPath indexPath: IndexPath) -> Column {
         let aspectRatio = itemSize.height / itemSize.width
         let itemRect = CGRect(x: frame.minX,
             y: bottomEdge + spacing,
             width: floor(width),
             height: floor(width * aspectRatio))
 
-        let itemAttributes = UICollectionViewLayoutAttributes(forCellWithIndexPath: indexPath)
+        let itemAttributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
         itemAttributes.frame = itemRect
 
         let newAttributes = attributes + [itemAttributes]
-        let newFrame = frame.rectByUnion(itemRect)
+        let newFrame = frame.union(itemRect)
 
         return Column(column: self, frame: newFrame, attributes: newAttributes)
     }
@@ -55,19 +55,24 @@ func ==(lhs: Column, rhs: Column) -> Bool {
     return (lhs.index == rhs.index) && (lhs.bottomEdge == rhs.bottomEdge)
 }
 
-func shortestColumn(columns: [Column]) -> Column? {
-    return sorted(columns) { $0.bottomEdge < $1.bottomEdge }.first
+func shortestColumn(_ columns: [Column]) -> Column? {
+    return columns.sorted { $0.bottomEdge < $1.bottomEdge }.first
 }
 
-func tallestColumn(columns: [Column]) -> Column? {
-    return sorted(columns) { $0.bottomEdge > $1.bottomEdge }.first
+func tallestColumn(_ columns: [Column]) -> Column? {
+    return columns.sorted { $0.bottomEdge > $1.bottomEdge }.first
 }
 
-func addItemToColumn(column: Column)(indexPath: NSIndexPath)(size: CGSize) -> Column {
+func addItemToColumn(_ column: Column, _ indexPath: IndexPath, _ size: CGSize) -> Column {
     return column.addItemWithSize(size, atIndexPath: indexPath)
 }
 
-func replaceColumn(var columns: [Column])(oldColumn: Column)(newColumn: Column) -> [Column] {
-    columns.removeAtIndex <^> find(columns, oldColumn)
+func replaceColumn(_ columns: [Column], _ oldColumn: Column, _ newColumn: Column) -> [Column] {
+    var columns = columns
+
+    if let index = columns.index(of: oldColumn) {
+        columns.remove(at: index)
+    }
+
     return columns + [newColumn]
 }
